@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve("dist", "assets"),
     filename: "bundle.js",
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
   module: {
     rules: [
       {
@@ -13,6 +16,14 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+        },
+      },
+      // Para TS
+      {
+        test: /\.tsx?$/,
+        use: {
+          // loader: 'awesome-typescript-loader',
+          loader: 'ts-loader'
         },
       },
       {
