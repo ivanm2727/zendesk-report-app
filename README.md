@@ -1,5 +1,23 @@
-# Boilerplate for Zendesk App Framework v2 using React
+# Boilerplate para desarrollo de aplicaciones de Zendesk usando React con TypeScript
 
+## Fuente de la base del proyecto
+https://github.com/Cloudhuset/Zendesk-React-App-Boilerplate.git
+
+## Ejecutar aplicacion con Docker
+Para ejecutar la aplicacion y verla desde la instancia de Zendesk en modo de desarrollo siga estos pasos:
+
+1. Se recomienda modificar el nombre del contenedor en el archivo __docker-compose.yaml__ por el de la aplicacion. Por defecto el nombre es: __zendesk-app-boilerplate__
+2. Ejecutar `docker-compose up -d`. Usar `docker ps` para verificar que se haya buildeado correctamente
+3. Abrir dos terminales para ejecutar __bash__ dentro del contenedor con el comando `docker exec -it zendesk-app-boilerplate bash`
+4. En uno de los terminales ejecutar `npm i`, luego `npm run dev` para ejecutar la aplicacion de React. Todo esto debe ser dentro del contenedor.
+5. En la otra terminal ir dentro de la carpeta dist con `cd dist` y ejecutar `zat server --bind 0.0.0.0` para iniciar el servidor de desarrollo de Zendesk. Este corre en el puerto __4567__ asi que se debe revisar que no este en uso. Todo esto debe ser dentro del contenedor.
+6. Usar la URL de la instancia de Zendesk (subdomain.zendesk.com) en la que se quiere probar y agregar al final de la URL el parametro `?zat=true`
+
+## Comandos npm
+
+En el README del proyecto original se usa yarn pero puede ser usado con npm
+
+# README original del proyecto:
 ## Includes
 
 * React
