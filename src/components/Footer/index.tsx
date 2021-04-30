@@ -19,7 +19,7 @@ const Component = () => {
         <span role="img" aria-label="Love">
           ☕
         </span>
-        &nbsp;by Cloudhuset
+        &nbsp;by Cloudhuset and modified by 3piLab Team ❤️
       </a>
     </footer>
   )
