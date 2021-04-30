@@ -55,6 +55,7 @@
 		"@zendeskgarden/react-tabs": "^8.36.2",
 		"@zendeskgarden/react-theming": "^8.36.2",
 		"awesome-typescript-loader": "^5.2.1",
+		"axios": "^0.21.1",
 		"core-js": "^3.6.5",
 		"promise-polyfill": "^8.2.0",
 		"react": "^17.0.1",
