@@ -1,5 +1,5 @@
 {
-  "name": "Zendesk React App Boilerplate",
+  "name": "SBD Sunshine Objects App",
   "author": {
     "name": "Cloudhuset",
     "email": "info@cloudhuset.dk",
@@ -9,7 +9,7 @@
   "private": true,
   "location": {
     "support": {
-      "ticket_sidebar": "assets/index.html"
+      "nav_bar": "assets/index.html"
     }
   },
   "version": "1.0",
