@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, useEffect} from 'react';
+import React, { useState, MouseEvent, HTMLAttributes} from 'react';
 import {
   Notification,
   Title,
@@ -9,14 +9,8 @@ import {
 import { Col, Row } from '@zendeskgarden/react-grid';
 import { Button } from '@zendeskgarden/react-buttons';
 import { Spinner } from '@zendeskgarden/react-loaders';
-import {getPokemonByName} from "../../frameworks_and_drivers/external_interfaces/zendeskapi"
+import { DEFAULT_THEME } from '@zendeskgarden/react-theming';
 
-// interface IGenerateState {
-//   loading: string,
-//   notificationType: string,
-//   notificationTitle: string,
-//   notificationBody: string
-// }
 
 enum NotificationTypes {
   success = 'success',
@@ -32,82 +26,53 @@ enum NotificationTitles {
 
 enum NotificationBodies {
   success = 'Your reports have been generated succesfully',
-  error = 'Error',
+  error = 'Status error: {{STATUS}}\n Error Description: {{DESCRIPTION}}',
   info = 'Your reports are being processed'
 }
 
-const Toasts = () => {
+interface IGenerateProps {
+  handleOnClickButton: any
+}
+
+interface IToastsProps extends IGenerateProps {}
+
+const Toasts = (props: IToastsProps) => {
   const { addToast } = useToast();
-  const [notificationType, setNotificationType] = useState<NotificationTypes>(NotificationTypes.success);
-  const [notificationTitle, setNotificationTitle] = useState<NotificationTitles>(NotificationTitles.success);
-  const [notificationBody, setNotificationBody] = useState<NotificationBodies>(NotificationBodies.success);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const setSuccessfulNotification = () =>{
-    setNotificationType(NotificationTypes.success)
-    setNotificationTitle(NotificationTitles.success)
-    setNotificationBody(NotificationBodies.success)
-  }
 
-  const setUnsuccessfulNotification = () =>{
-    setNotificationType(NotificationTypes.error)
-    setNotificationTitle(NotificationTitles.error)
-    setNotificationBody(NotificationBodies.error)
-  }
-
-  const setLoadingNotification = () =>{
-    setNotificationType(NotificationTypes.info)
-    setNotificationTitle(NotificationTitles.info)
-    setNotificationBody(NotificationBodies.info)
-    setIsLoading(true);
-  }
-
-  const setNotificationByStatusResponse = (status:number) =>{
-    if (status>=200 && status<400){
-      setSuccessfulNotification()
-    } else{
-      setUnsuccessfulNotification()
-      console.log(notificationType)
-      console.log('deberia ser error')
+  const renderToasts = (type: NotificationTypes, title: NotificationTitles, body: NotificationBodies | string) => {
+      addToast(
+        ({ close }) => (
+          <Notification type={type} style={{ maxWidth: 450 }}>
+            <Title>{title}</Title>
+              {body}
+            <Close aria-label="Close" onClick={close} />
+          </Notification>
+        ),
+        { placement: 'bottom' }
+      );
     }
-  }
-
-  const renderToasts = (placement: any) => {
-    addToast(
-      ({ close }) => (
-        <Notification type={notificationType} style={{ maxWidth: 450 }}>
-          <Title>{notificationTitle}</Title>
-            {notificationBody}
-          <Close aria-label="Close" onClick={close} />
-        </Notification>
-      ),
-      { placement }
-    );
-  }
 
   const handleClick = async (event:MouseEvent,placement:string) => {
     event.preventDefault();
     console.log('Trayendo Reporte')
-    setLoadingNotification()
-    //setNotificationType(NotificationTypes.info);
-    // AXIOS haciendo request al svc de backend
-    // X cantidad de tiempo 
+    setIsLoading(true);
 
     try{
-      const response= await getPokemonByName('yonathan');
-      setNotificationByStatusResponse(response.status)
-      console.log(notificationType)
-      console.log(response)
-      
+      const response = await props.handleOnClickButton()
+      console.log('Reporte creado')
+      return renderToasts(NotificationTypes.success, NotificationTitles.success, NotificationBodies.success);
     } catch(error:any){
       if (error.response){
-        console.log(error.response.status)
-        setNotificationByStatusResponse(error.response.status)
+        console.log(error.response)
+        const body = NotificationBodies.error
+            .replace('{{STATUS}}', error.response.status)
+            .replace('{{DESCRIPTION}}', error.response.statusText)
+        return renderToasts(NotificationTypes.error, NotificationTitles.error, body);
       }
-
     }finally{
       setIsLoading(false);
-      return renderToasts(placement);
     }
   }
 
@@ -115,22 +80,45 @@ const Toasts = () => {
     <>
     <Row justifyContent="start">
         <Col size="2">
-          <Button onClick={(event)=>handleClick(event,'bottom')} isStretched>
+          <Button 
+            // onClick={(event)=>handleClick(event,'bottom')} isStretched
+            onClick={(event) => {
+              handleClick(event, 'bottom') 
+            }}
+            isStretched
+          >
             Generate Report
           </Button>
         </Col>
-        {isLoading && <Spinner size="48"/>}
+        {isLoading && <Spinner size="48"/> }
+    </Row>
+    <Row justifyContent='center'>
+      {isLoading && <Col size='3'>
+          <Notification type="info">
+            <Title>{NotificationTitles.info}</Title>
+              {NotificationBodies.info}
+          </Notification>
+        </Col>}
     </Row>
        
     </>
   );
 };
 
+const bottomProps = {
+  style: { bottom: DEFAULT_THEME.space.base * 3 }
+} as HTMLAttributes<HTMLDivElement>;
 
-const Generate = () => {
+const placementProps = {
+  'bottom-start': bottomProps,
+  bottom: bottomProps,
+  'bottom-end': bottomProps
+};
+
+const Generate = (props: IGenerateProps) => {
   return (
-    <ToastProvider>
-      <Toasts />
+    <ToastProvider placementProps={placementProps}>
+      <Toasts handleOnClickButton={props.handleOnClickButton}/>
     </ToastProvider>
   )
 }

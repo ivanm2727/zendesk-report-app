@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import zafClient from '../../frameworks_and_drivers/external_interfaces/zendesk/zaf_client';
 import { DEFAULT_THEME, ThemeProvider } from '@zendeskgarden/react-theming';
 import Dropdown from "../../components/Dropdown";
 import { Row } from '@zendeskgarden/react-grid';
-import Date from "../../components/Date";
+import DateComponent from "../../components/DateComponent";
 import Generate from "../../components/Generate";
+import { getReport } from '../../frameworks_and_drivers/external_interfaces/reports_api';
 
 
 
@@ -18,40 +19,53 @@ const groupOptions = [
 ];
 
 const formatOptions = [
-  '.xlsx file',
-  '.csv file'
+  'xlsx',
+  'csv'
 ];
 
 const App = () => {
-  const [requester, setRequester] = React.useState<any>()
+  const [startDate, setStartDate] = useState<string>(new Date().toISOString()) 
+  const [endDate, setEndDate] = useState<string>(new Date().toISOString())
+  const [selectedGroup, setSelectedGroup] = useState(groupOptions[0]);
+  const [selectedFormat, setSelectedFormat] = useState(formatOptions[0]);
+ 
 
-  React.useEffect(() => {
-    const execute = async() => {
-      console.log('Aqui')
-      zafClient.invoke('resize', { height: '400px' })
-      const data = await zafClient.get('ticket.requester')
-      console.log(data)
-      const requester = data['ticket.requester']
-      setRequester(requester)
-    }
-    execute();
-  }, [])
-  
+  const handleOnClickButton = async () => {
+    await getReport({ start: startDate, end: endDate, group: selectedGroup, export_type: selectedFormat })
+  }
+
   return (
     <div className="App">
       <div style={{ padding: DEFAULT_THEME.space.md }}>
         <ThemeProvider>
           <Row justifyContent="start">
-            <Date/>
-            <Dropdown title='Select group' options={groupOptions}/>
-            <Dropdown title='Select format' options={formatOptions}/>
+            <DateComponent 
+              handleOnChangeStartDate={(date: Date) => {
+                date.setHours(0);
+                setStartDate(date.toISOString())
+              }}
+              handleOnChangeEndDate={(date: Date) => {
+                date.setHours(12);
+                setEndDate(date.toISOString());
+              }}
+            />
+            <Dropdown 
+              title='Select group' 
+              options={groupOptions} 
+              handleOnSelectItem={(selectedGroup: any) => setSelectedGroup(selectedGroup)}
+            />
+            <Dropdown 
+              title='Select format' 
+              options={formatOptions} 
+              handleOnSelectItem={(selectedFormat: any) => setSelectedFormat(selectedFormat)}
+            />
           </Row>
           
         </ThemeProvider>
       </div>
       <div style={{ padding: DEFAULT_THEME.space.md }}>
         <ThemeProvider>
-              <Generate/>
+            <Generate handleOnClickButton={handleOnClickButton}/>
         </ThemeProvider>
       </div>
     </div>
