@@ -5,7 +5,8 @@ import { Col } from '@zendeskgarden/react-grid';
 
 interface IDropdownProps {
   title: string,
-  options: string[]
+  options: string[],
+  handleOnSelectItem: any
 }
 
 
@@ -27,7 +28,7 @@ const DropdownField = (props: IDropdownProps) => {
       setMatchingOptions(matchedOptions);
     }, 300)
   );
-
+  
   useEffect(() => {
     filterMatchingOptionsRef.current(inputValue);
   }, [inputValue]);
@@ -38,7 +39,10 @@ const DropdownField = (props: IDropdownProps) => {
         <Dropdown
           inputValue={inputValue}
           selectedItem={selectedItem}
-          onSelect={item => setSelectedItem(item)}
+          onSelect={(item: string) => {
+            setSelectedItem(item)
+            props.handleOnSelectItem(item)
+          }}
           onInputValueChange={value => setInputValue(value)}
           downshiftProps={{ defaultHighlightedIndex: 0 }}
         >
