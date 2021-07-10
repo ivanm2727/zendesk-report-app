@@ -1,6 +1,6 @@
 {
   "app": {
-    "description": "This is a Boilerplate for React Apps in Zendesk Support",
-    "name": "Zendesk React App Boilerplate"
+    "description": "Zendesk application created to download reports based on the sunshine objects 'sbd_case_product' and 'sbd_product'",
+    "name": "SBD Sunshine Objects App"
   }
 }
