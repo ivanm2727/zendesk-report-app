@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Datepicker } from '@zendeskgarden/react-datepickers';
 import { Field, Label, Input, Message } from '@zendeskgarden/react-forms';
-import { compareAsc, addDays } from 'date-fns';
+import { compareAsc } from 'date-fns';
 import { Row, Col } from '@zendeskgarden/react-grid';
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -10,9 +10,14 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
     year: 'numeric'
   });
 
-const DatePick = () => {
+interface IDatePickProps {
+  handleOnChangeStartDate: any,
+  handleOnChangeEndDate: any
+}
+
+const DatePick = (props: IDatePickProps) => {
   const [startValue, setStartValue] = useState(new Date());
-  const [endValue, setEndValue] = useState(addDays(new Date(), 2));
+  const [endValue, setEndValue] = useState(new Date());
   const isInvalid = () => compareAsc(startValue, endValue) === 1;
 
   return (
@@ -23,7 +28,10 @@ const DatePick = () => {
                 <Label>From</Label>
                 <Datepicker
                     value={startValue}
-                    onChange={setStartValue}
+                    onChange={(date) => {
+                      setStartValue(date);
+                      props.handleOnChangeStartDate(date);
+                    }}
                     formatDate={date => dateFormatter.format(date)}
                     >
                   <Input />
@@ -35,7 +43,10 @@ const DatePick = () => {
                 <Label>To</Label>
                 <Datepicker
                     value={endValue}
-                    onChange={setEndValue}
+                    onChange={(date) => {
+                      setEndValue(date);
+                      props.handleOnChangeEndDate(date);
+                    }}
                     formatDate={date => dateFormatter.format(date)}
                     >
                   <Input validation={isInvalid() ? 'error' : undefined} />
