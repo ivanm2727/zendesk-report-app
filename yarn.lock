@@ -1196,6 +1196,22 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.9.2.tgz"
   "version" "2.9.2"
 
+"@reach/auto-id@^0.16.0":
+  "integrity" "sha512-5ssbeP5bCkM39uVsfQCwBBL+KT8YColdnMN5/Eto6Rj7929ql95R3HZUOkKIvj7mgPtEb60BLQxd1P3o6cjbmg=="
+  "resolved" "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.16.0.tgz"
+  "version" "0.16.0"
+  dependencies:
+    "@reach/utils" "0.16.0"
+    "tslib" "^2.3.0"
+
+"@reach/utils@0.16.0":
+  "integrity" "sha512-PCggBet3qaQmwFNcmQ/GqHSefadAFyNCUekq9RrWoaU9hh/S4iaFgf2MBMdM47eQj5i/Bk0Mm07cP/XPFlkN+Q=="
+  "resolved" "https://registry.npmjs.org/@reach/utils/-/utils-0.16.0.tgz"
+  "version" "0.16.0"
+  dependencies:
+    "tiny-warning" "^1.0.3"
+    "tslib" "^2.3.0"
+
 "@sinonjs/commons@^1.7.0":
   "integrity" "sha512-xkNcLAn/wZaX14RPlwizcKicDk9G3F8m2nU3L7Ukm5zBgTwiT0wsoFAHx9Jq56fJA1z/7uKGtCRu16sOUCLIHQ=="
   "resolved" "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.3.tgz"
@@ -1636,6 +1652,14 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^0.5.5"
 
+"@zendeskgarden/container-pagination@^0.3.8":
+  "integrity" "sha512-kMOqQSORQwV5nwqS03HUfn4NKYTlYWrNknrGFWgLBk33km9rDtLaEpSm2jV1BlDbfK4rf0eGJZh7N0CdZ9WDWQ=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-pagination/-/container-pagination-0.3.12.tgz"
+  "version" "0.3.12"
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-selection" "^1.3.12"
+
 "@zendeskgarden/container-schedule@^1.3.7":
   "integrity" "sha512-C05686/bdLSFL7Jx6qvYk18zWN2IkQlv5vVWzR8SFjMEMXCX9tOY+7EoKTYvI7yxYzgm/9ykI9aXG9cwcMccFQ=="
   "resolved" "https://registry.npmjs.org/@zendeskgarden/container-schedule/-/container-schedule-1.3.8.tgz"
@@ -1643,21 +1667,21 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
 
-"@zendeskgarden/container-selection@^1.3.8", "@zendeskgarden/container-selection@^1.3.9":
-  "integrity" "sha512-E1MjdoldbRIPiZLQN73Yj9N239chOwlLDLrKuLqF+CPqHFtxRxXxxAD+OZg4NJVocdNk0QDlnytBJSb3aUp46Q=="
-  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-selection/-/container-selection-1.3.9.tgz"
-  "version" "1.3.9"
+"@zendeskgarden/container-selection@^1.3.12", "@zendeskgarden/container-selection@^1.3.8", "@zendeskgarden/container-selection@^1.3.9":
+  "integrity" "sha512-TGWcJ3c5goZ4yvPLnsuqIDg6xWA1t8hfclGW/az9zaomhooAcVOR3I1MApUjDncLZrSd0i0sw6tQYV/eAuJN1g=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-selection/-/container-selection-1.3.12.tgz"
+  "version" "1.3.12"
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@zendeskgarden/container-utilities" "^0.5.5"
+    "@zendeskgarden/container-utilities" "^0.6.1"
 
 "@zendeskgarden/container-tabs@^0.5.8":
-  "integrity" "sha512-guaXUwZ1fIXla23qSUWZldp2k63oP73bMqARsr/ZrJPiyKiPquCM4xrnD44QhEm5J5jPaauGadQvhdZlAFG9ig=="
-  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-tabs/-/container-tabs-0.5.9.tgz"
-  "version" "0.5.9"
+  "integrity" "sha512-jcn4gHsflC7yvnr6FWlY4fXHZqMML7xRcWoqUyY+eAuZl8VL+Xyp6OEISjBFh42tygTd++ntSzuRa1s+srUxOA=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-tabs/-/container-tabs-0.5.12.tgz"
+  "version" "0.5.12"
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@zendeskgarden/container-selection" "^1.3.9"
+    "@zendeskgarden/container-selection" "^1.3.12"
     "react-uid" "^2.2.0"
 
 "@zendeskgarden/container-utilities@^0.5.5":
@@ -1666,6 +1690,14 @@
   "version" "0.5.5"
   dependencies:
     "@babel/runtime" "^7.8.4"
+
+"@zendeskgarden/container-utilities@^0.6.1":
+  "integrity" "sha512-eoTlYIJQ7NmAQT2Q5qXrPEZULzS3y/2AyQDImYvA3aep7sMrEid59+RFsLHM0CBnygND4rJi54LPOP8bWvxetQ=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/container-utilities/-/container-utilities-0.6.1.tgz"
+  "version" "0.6.1"
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@reach/auto-id" "^0.16.0"
 
 "@zendeskgarden/react-buttons@^8.38.0":
   "integrity" "sha512-SG5kM8FclwLe4gPOf3GZrpMOqaLOCraiapdQdZrTVq3wQmjW0xyHS9mM9mfVFvoutmLcCnK2y9q5ZEXu8zGmWQ=="
@@ -1738,20 +1770,49 @@
     "react-transition-group" "^4.4.1"
     "react-uid" "^2.3.1"
 
-"@zendeskgarden/react-tabs@^8.36.2":
-  "integrity" "sha512-5+7JbdzaXQtbQqQwN7x0GCL3lXWQjXyu5dnLX/vPTuaHuPtPKAYQL0D3iIw/tNZsRgQ/3MIbgkfSDLa1INqNAg=="
-  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-tabs/-/react-tabs-8.38.0.tgz"
-  "version" "8.38.0"
+"@zendeskgarden/react-pagination@^8.40.0":
+  "integrity" "sha512-+7U03Ugp726kCNs/oBClKtm7/Fi7a7HctsgDJnP3IEPGwgMxAl+omZ4dYQOT0n9spAfqkWFWR4sOKrNkoH2N8g=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-pagination/-/react-pagination-8.40.0.tgz"
+  "version" "8.40.0"
+  dependencies:
+    "@zendeskgarden/container-pagination" "^0.3.8"
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    "polished" "^4.0.0"
+    "prop-types" "^15.5.7"
+
+"@zendeskgarden/react-tables@^8.40.0":
+  "integrity" "sha512-ezu3h5bDsE+/fNHC+dAq0bcIgXeEI6Mq6EWANQwfsj0ZeNHOMVlNs6s1J5sDoBuKmgWmYlVyUQyAupq5A2Sg3w=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-tables/-/react-tables-8.40.0.tgz"
+  "version" "8.40.0"
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    "dom-helpers" "^5.1.0"
+    "polished" "^4.0.0"
+    "prop-types" "^15.5.7"
+
+"@zendeskgarden/react-tabs@^8.40.0":
+  "integrity" "sha512-YmoyzKR8w2ZgcmTuiZf4F3v0yRkBs2Op/IejrwLSJmu5jkPmaRwwWRYrVYAoCQRZ+v2wDHZ+zn3ZKHpIV14xqg=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-tabs/-/react-tabs-8.40.0.tgz"
+  "version" "8.40.0"
   dependencies:
     "@zendeskgarden/container-tabs" "^0.5.8"
     "@zendeskgarden/container-utilities" "^0.5.5"
     "polished" "^4.0.0"
     "prop-types" "^15.5.7"
 
-"@zendeskgarden/react-theming@^8.38.0":
-  "integrity" "sha512-mf1QvIvkSOD73elM4OgSfZh0jgepBFNw+7dpnfseg37/XoLGOssGRqqoWFUh4O3qa/yyPl1Zfr+ZchwyfWXyHQ=="
-  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-theming/-/react-theming-8.38.0.tgz"
-  "version" "8.38.0"
+"@zendeskgarden/react-tags@^8.39.0":
+  "integrity" "sha512-4XhPcleV9OFt1kC9cJ0sRXUwxdaWfkroAR5quGF8xPTMvVgWfR6PX3NMN+IEjqoITlJ90locE3mxaSki2XedBw=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-tags/-/react-tags-8.39.0.tgz"
+  "version" "8.39.0"
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    "polished" "^4.0.0"
+    "prop-types" "^15.5.7"
+
+"@zendeskgarden/react-theming@^8.1.0", "@zendeskgarden/react-theming@^8.40.0":
+  "integrity" "sha512-nr1VsRA1+rkP4xb6NXeZ6RMwv4ai/NINl+ubb6whilfSrUnhMd1QrOu5EaiYcSv9ra56a5oivLgkmFDhiqGRFQ=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-theming/-/react-theming-8.40.0.tgz"
+  "version" "8.40.0"
   dependencies:
     "@zendeskgarden/container-focusvisible" "^0.4.6"
     "@zendeskgarden/container-utilities" "^0.5.5"
@@ -3032,7 +3093,7 @@
   dependencies:
     "utila" "~0.4"
 
-"dom-helpers@^5.0.1":
+"dom-helpers@^5.0.1", "dom-helpers@^5.1.0":
   "integrity" "sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA=="
   "resolved" "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz"
   "version" "5.2.1"
@@ -6326,7 +6387,7 @@
     "react-onclickoutside" "^6.10.0"
     "react-popper" "^2.2.5"
 
-"react-dom@^17.0.2":
+"react-dom@^17.0.2", "react-dom@>=16.8.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -6398,7 +6459,7 @@
   dependencies:
     "tslib" "^1.10.0"
 
-"react@^17.0.2":
+"react@^17.0.2", "react@>=16.8.0":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -7312,10 +7373,10 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
 
-"styled-components@^5.3.0":
-  "integrity" "sha512-bPJKwZCHjJPf/hwTJl6TbkSZg/3evha+XPEizrZUGb535jLImwDUdjTNxXqjjaASt2M4qO4AVfoHJNe3XB/tpQ=="
-  "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.0.tgz"
-  "version" "5.3.0"
+"styled-components@^4.2.0 || ^5.0.0", "styled-components@^5.3.1":
+  "integrity" "sha512-JThv2JRzyH0NOIURrk9iskdxMSAAtCfj/b2Sf1WJaCUsloQkblepy1jaCLX/bYE+mhYo3unmwVSI9I5d9ncSiQ=="
+  "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.1.tgz"
+  "version" "5.3.1"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/traverse" "^7.4.5"
@@ -7476,6 +7537,11 @@
   "resolved" "https://registry.npmjs.org/throat/-/throat-5.0.0.tgz"
   "version" "5.0.0"
 
+"tiny-warning@^1.0.3":
+  "integrity" "sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA=="
+  "resolved" "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
+  "version" "1.0.3"
+
 "tmpl@1.0.x":
   "integrity" "sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE="
   "resolved" "https://registry.npmjs.org/tmpl/-/tmpl-1.0.4.tgz"
@@ -7588,6 +7654,11 @@
   "integrity" "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz"
   "version" "2.3.0"
+
+"tslib@^2.3.0":
+  "integrity" "sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
+  "version" "2.3.1"
 
 "tunnel-agent@^0.6.0":
   "integrity" "sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0="
