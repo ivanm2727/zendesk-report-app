@@ -1,4 +1,7 @@
 {
-  "zat_latest": "3.8.1",
-  "zat_update_check": "2021-07-10"
+  "app_id": 531747,
+  "zat_latest": "3.8.5",
+  "zat_update_check": "2021-09-23",
+  "subdomain": "https://holastanley1581442916.zendesk.com/",
+  "username": "andreag@trespimedios.co"
 }

@@ -25,7 +25,7 @@ enum NotificationTitles {
 }
 
 enum NotificationBodies {
-  success = 'Your reports have been generated succesfully',
+  success = 'Your requested was successfully sent',
   error = 'Status error: {{STATUS}}\n Error Description: {{DESCRIPTION}}',
   info = 'Your reports are being processed'
 }
@@ -56,21 +56,27 @@ const Toasts = (props: IToastsProps) => {
 
   const handleClick = async (event:MouseEvent,placement:string) => {
     event.preventDefault();
-    console.log('Trayendo Reporte')
+    console.log('Requesting report')
     setIsLoading(true);
 
     try{
       const response = await props.handleOnClickButton()
-      console.log('Reporte creado')
+      console.log('Report requested')
       return renderToasts(NotificationTypes.success, NotificationTitles.success, NotificationBodies.success);
     } catch(error:any){
+      let body = 'An error has occured. Report in to an administrator'
       if (error.response){
         console.log(error.response)
-        const body = NotificationBodies.error
+        body = NotificationBodies.error
             .replace('{{STATUS}}', error.response.status)
             .replace('{{DESCRIPTION}}', error.response.statusText)
-        return renderToasts(NotificationTypes.error, NotificationTitles.error, body);
+      } else {
+        console.log(error)
+        body = NotificationBodies.error
+            .replace('{{STATUS}}', '500')
+            .replace('{{DESCRIPTION}}', body)
       }
+      return renderToasts(NotificationTypes.error, NotificationTitles.error, body);
     }finally{
       setIsLoading(false);
     }
@@ -85,6 +91,7 @@ const Toasts = (props: IToastsProps) => {
             onClick={(event) => {
               handleClick(event, 'bottom') 
             }}
+            disabled={isLoading}
             isStretched
           >
             Generate Report
@@ -100,7 +107,6 @@ const Toasts = (props: IToastsProps) => {
           </Notification>
         </Col>}
     </Row>
-       
     </>
   );
 };
